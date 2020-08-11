@@ -10,7 +10,7 @@ import numpy as np
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Park_test(Heteroscedasticity_tests):
      '''
-     Park_test class tests heteroscedasticity computing coefficient(s) of linear regression between feature in origional regression under the test and squared residuals
+     Park_test class tests heteroscedasticity computing coefficient(s) of linear regression between feature in original regression under the test and squared residuals
 
      Attributes:
             data file, file_name is name string
@@ -24,7 +24,7 @@ class Park_test(Heteroscedasticity_tests):
          '''
          Function computes coefficient in park test regression
          arg:  none
-         outcome coeffitient in regression between income feature in origional regression and squared residuals
+         outcome coeffitient in regression between income feature in original regression and squared residuals
          '''
          x=self.X.values.reshape(-1,1)
          y=self.Y
