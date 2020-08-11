@@ -23,7 +23,7 @@ class Glejser_test(Heteroscedasticity_tests):
          '''
          Function computes coefficient in park test regression
          
-         arg:  none
+         arg: regession income x and outcome y
          outcome R2 and rme squared errors for regression with given x and y
          '''
         #x = x.values.reshape(-1,1)
