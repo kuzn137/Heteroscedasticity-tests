@@ -1,5 +1,5 @@
 # Heteroscedasticity-tests
- Class for Heteroscedasticity tests, Park and Glejser methods.  Both methods use linear regression for function of residuals as outcome.
+ Class for Heteroscedasticity tests, Park and Glejser methods.  Both methods use linear regression for origional incoming feature and a function of residuals as outcome.
  Class is under construction.
  
  # Current files
