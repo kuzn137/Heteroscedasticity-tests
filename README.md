@@ -5,4 +5,5 @@
  # Current files
  Heteroscedasticity_test_general.py is generic class
  park_test.py is Park test class
+ data_1_1.csv is data file
  
