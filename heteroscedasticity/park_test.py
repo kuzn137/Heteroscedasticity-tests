@@ -5,11 +5,12 @@ Created on Sat Aug  8 10:44:26 2020
 @author: kuzn137
 """
 import numpy as np
+
 #import matplotlib.pyplot as plt
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Park_test(Heteroscedasticity_tests):
      '''
-     Park_test class tests heteroscedasticity computing coefficient(s) of linear regression between feature in original regression under the test and squared residuals
+     Park_test class tests heteroscedasticity computing coefficient(s) of linear regression between feature in origional regression under the test and squared residuals
 
      Attributes:
             data file, file_name is name string
@@ -22,18 +23,16 @@ class Park_test(Heteroscedasticity_tests):
      def park_regression(self):
          '''
          Function computes coefficient in park test regression
-         
          arg:  none
          outcome coeffitient in regression between income feature in origional regression and squared residuals
          '''
-        x=self.X
-        y=self.Y
-        residuals = self.find_residuals(x, y)
-        x = self.X.values.reshape(-1,1)
-        y = np.square(residuals)
-        model=self.model
-        model.fit(x, y)
-        return  model.coef_[0][0]
+         x=self.X.values.reshape(-1,1)
+         y=self.Y
+         residuals = self.find_residuals(x, y)
+         y_new = np.square(residuals)
+         model=self.model
+         model.fit(x, y_new)
+         return  model.coef_[0][0]
  
 print(Park_test("data_1_1.csv", 'x', 'y').park_regression())
         

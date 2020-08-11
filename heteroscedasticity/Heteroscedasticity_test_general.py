@@ -32,11 +32,11 @@ class Heteroscedasticity_tests():
           function outcome residual
           '''
           model = self.model
-          x = self.X.values.reshape(-1,1)
+        #  x = self.X.values.reshape(-1,1)
           y = self.Y.values.reshape(-1,1)
           model.fit(x, y)
           y_pred=model.predict(y)
-          return y_pred - y
+          return abs(y_pred - y)
         
         
          
