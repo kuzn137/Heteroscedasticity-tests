@@ -24,7 +24,7 @@ class Park_test(Heteroscedasticity_tests):
          '''
          Function computes coefficient in park test regression
          arg:  none
-         outcome coeffitient in regression between income feature in original regression and squared residuals
+         outcome coefficient in regression between incoming feature in original regression and squared residuals
          '''
          x=self.X.values.reshape(-1,1)
          y=self.Y
