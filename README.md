@@ -11,4 +11,5 @@
  
 # References
 https://en.wikipedia.org/wiki/Heteroscedasticity
+
 R. E. Park (1966). "Estimation with Heteroscedastic Error Terms". Econometrica. 34 (4): 888
