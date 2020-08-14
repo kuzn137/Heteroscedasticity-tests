@@ -2,6 +2,12 @@
  Class for Heteroscedasticity tests, Park and Glejser methods.  Both methods use linear regression for original incoming feature function and a function of residuals as outcome.
  Class is under construction.
  
+ # Author
+ Inga Kuznetsova
+ 
+ # Libraries
+ scikit learn, stats models, numpy, pandas
+ 
  # Current files
  Heteroscedasticity_test_general.py is generic class
  
