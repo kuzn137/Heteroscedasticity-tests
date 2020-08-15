@@ -21,10 +21,10 @@ class Heteroscedasticity_tests():
       def __init__(self, file_name, col_x, col_y):
          self.df=pd.read_csv(file_name)
          self.X = self.df[col_x].values.reshape(-1,1)
-         self.Y = self.df[col_y]
+         self.Y = self.df[col_y].values.reshape(-1,1)
          self.model = lm.LinearRegression()
          self.features = [self.X, np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
-        
+         self.y_new=self.find_residuals(self.X, self.Y)
     
       def find_residuals(self, x, y):
           '''
@@ -35,8 +35,7 @@ class Heteroscedasticity_tests():
           function outcome residual
           '''
           model = self.model
-        #  x = self.X.values.reshape(-1,1)
-          y = self.Y.values.reshape(-1,1)
+          y = self.Y
           model.fit(x, y)
           y_pred=model.predict(y)
           return abs(y_pred - y)
