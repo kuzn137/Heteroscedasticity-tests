@@ -54,7 +54,7 @@ class Heteroscedasticity_tests():
           results = model.fit()
           return results.rsquared, results.pvalues[0]
       
-      def plot_data(self, x, y):
+      def plot_data(self, x, y, xlabel, ylabel, title=None):
 
         """Function to plot original data
         
@@ -66,9 +66,8 @@ class Heteroscedasticity_tests():
         """
         # make the plot
         plt.scatter(x, y)
-        plt.title('Original data')
-        plt.ylabel('Y')
-        plt.xlabel('X')
+        plt.ylabel(ylabel)
+        plt.xlabel(xlabel)
       
         plt.show()
 
