@@ -20,7 +20,7 @@ class Glejser_test(Heteroscedasticity_tests):
             
      def choose_test(self):
         '''
-         Function choose regression for Glejser test with the best R2 score
+         Function chooses regression for Glejser test with the best R2 score
          
          args:  none
          return: maximum R2 score, and number of Glejser regression with this score

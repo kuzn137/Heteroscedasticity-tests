@@ -5,7 +5,6 @@ Created on Sat Aug  8 10:44:26 2020
 @author: kuzn137
 """
 import numpy as np
-#import matplotlib.pyplot as plt
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Park_test(Heteroscedasticity_tests):
      '''
@@ -25,15 +24,15 @@ class Park_test(Heteroscedasticity_tests):
          args:  none
          returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
          '''
-         #consider logs as suggested
+         #considering logs as suggested
          x = np.log(np.abs(self.X))
          y=np.log(np.square(self.y_new))
          self.plot_original()
          pvalue = self.find_p_value(x, y)[1]
          if pvalue > 0.05:
-            return "Park test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+            return "Park test: P value {} is larger than 0.05, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "Park test: P value {} is smaller than 0.05, you may have Heteroscedasticity".format(pvalue)
+            return "Park test: P value {} is smaller than 0.05, you may have heteroscedasticity".format(pvalue)
         
         
  
