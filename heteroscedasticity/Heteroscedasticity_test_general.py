@@ -6,6 +6,7 @@ Created on Thu Aug  6 12:38:37 2020
 """
 from sklearn import linear_model as lm
 import pandas as pd
+import numpy as np
 import statsmodels.api as sm
 class Heteroscedasticity_tests():
       """ Generic class for Heteroscedasticity tests as
@@ -19,9 +20,11 @@ class Heteroscedasticity_tests():
       """
       def __init__(self, file_name, col_x, col_y):
          self.df=pd.read_csv(file_name)
-         self.X = self.df[col_x]
+         self.X = self.df[col_x].values.reshape(-1,1)
          self.Y = self.df[col_y]
          self.model = lm.LinearRegression()
+         self.features = [self.X, np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
+        
     
       def find_residuals(self, x, y):
           '''
@@ -47,7 +50,6 @@ class Heteroscedasticity_tests():
           model=sm.regression.linear_model.OLS(x, y)
           results = model.fit()
           print(results.summary())
-          print(results.pvalues[0])
           return results.pvalues[0]
         
         

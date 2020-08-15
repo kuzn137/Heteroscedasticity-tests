@@ -27,10 +27,11 @@ class Park_test(Heteroscedasticity_tests):
          args:  none
          returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
          '''
-         x=self.X.values.reshape(-1,1)
+         x=self.X
          y=self.Y
          residuals = self.find_residuals(x, y)
          y_new = np.square(residuals)
+         x = np.abs(x)
          pvalue = self.find_p_value(x, y_new)
          return "pvalue {}".format(pvalue)
  
