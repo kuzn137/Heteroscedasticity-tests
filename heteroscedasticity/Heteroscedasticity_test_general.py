@@ -49,7 +49,7 @@ class Heteroscedasticity_tests():
           args: x and y, income and outcome for linear regression
           returns: p value
           '''
-          #other library for regression to find p value, usually I like scikit learn 
+          #other library for regression to find p value 
           md=sm.regression.linear_model.OLS(x, y)
           results = md.fit()
           print(results.summary())

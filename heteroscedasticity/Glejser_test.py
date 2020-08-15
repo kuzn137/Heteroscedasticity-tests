@@ -4,11 +4,10 @@ Created on Mon Aug 10 23:50:51 2020
 
 @author: kuzn137
 """
-from sklearn.metrics import r2_score, mean_squared_error
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Glejser_test(Heteroscedasticity_tests):
      '''
-     Glejser_test class tests heteroscedasticity computing p value for linear regression between function of feature in origional regression under the test and 
+     Glejser_test class tests heteroscedasticity computing p value for linear regression between function of feature in original regression under the test and 
      absolute value of residuals
 
      Attributes:
@@ -19,11 +18,10 @@ class Glejser_test(Heteroscedasticity_tests):
      def __init__(self, file_name, col_x, col_y):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
          self.scores=[]
-         
-    
+            
      def choose_test(self):
         '''
-         Function choose regression for Glejser test with best R2 score
+         Function choose regression for Glejser test with the best R2 score
          
          args:  none
          return: maximum R2 score, and number of Glejser regression with this score
@@ -50,5 +48,5 @@ class Glejser_test(Heteroscedasticity_tests):
             return "P value {} is smaller than 0.05, you have Heteroscedasticity".format(pvalue)
  
         
-print(Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())       
+#print(Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())       
  
