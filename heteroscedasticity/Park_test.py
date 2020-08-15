@@ -27,11 +27,15 @@ class Park_test(Heteroscedasticity_tests):
          '''
          #consider logs as suggested
          x = np.log(np.abs(self.X))
-         pvalue = self.find_p_value(x, np.log(np.square(self.y_new)))[1]
+         y=np.log(np.square(self.y_new))
+         self.plot_original()
+         pvalue = self.find_p_value(x, y)[1]
          if pvalue > 0.05:
             return "Park test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
             return "Park test: P value {} is smaller than 0.05, you may have Heteroscedasticity".format(pvalue)
+        
+        
  
 
         

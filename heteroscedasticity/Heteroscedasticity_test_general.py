@@ -8,6 +8,7 @@ from sklearn import linear_model as lm
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
 class Heteroscedasticity_tests():
       """ Generic class for Heteroscedasticity tests as
             Park and Glejser methods.
@@ -50,9 +51,30 @@ class Heteroscedasticity_tests():
           returns: p value
           '''
           #other library for regression to find p value 
-          md=sm.regression.linear_model.OLS(x, y)
-          results = md.fit()
+          model=sm.regression.linear_model.OLS(x, y)
+          results = model.fit()
           return results.rsquared, results.pvalues[0]
+      
+      def plot_original(self):
+
+        """Function to plot the normalized histogram of the data and a plot of the 
+        probability density function along the same range
+        
+        Args:
+           none
+        Returns:
+            plot
+            
+        """
+        # make the plot
+        plt.scatter(self.X, self. Y)
+        plt.title('Original data')
+        plt.ylabel('Y')
+        plt.xlabel('X')
+      
+        plt.show()
+
+        
         
         
          

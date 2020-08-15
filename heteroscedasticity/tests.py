@@ -7,8 +7,10 @@ Created on Sat Aug 15 10:03:40 2020
 import Glejser_test
 import Park_test
 
-
-print(Park_test.Park_test("data_1_1.csv", 'x', 'y').park_test()) 
-      
-print(Glejser_test.Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())       
+#Park test
+print(Park_test.Park_test("data_1_1.csv", 'x', 'y').park_test())
+#Glejser test      
+print(Glejser_test.Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())  
+     
+#It looks like test without logs gives much better result to detect heteroscedasticity
   
