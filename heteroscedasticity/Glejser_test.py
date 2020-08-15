@@ -23,10 +23,10 @@ class Glejser_test(Heteroscedasticity_tests):
         
      def regression_scores(self, x, y):
          '''
-         Function computes coefficient in Glejser test regression
+         Function computes scores R2 and MSE in Glejser test regression
          
          args: regession income x and outcome y
-         returns: R2 and rme squared errors for regression with given x and y
+         returns: R2 and MSE scores for regression with given x and y
          '''
         #x = x.values.reshape(-1,1)
          model=self.model
@@ -41,7 +41,7 @@ class Glejser_test(Heteroscedasticity_tests):
          Function computes coefficient in Glejser test regression
          
          arg:  none
-         outcome coeffitient in regression between income feature in original regression and absolute value of residuals
+         returns R2 and MSE in regression between income feature in original regression and absolute value of residuals
          '''
          x=self.X.values.reshape(-1,1)
          y=self.Y
@@ -52,7 +52,7 @@ class Glejser_test(Heteroscedasticity_tests):
          Function computes coefficient in Glejser test regression
          
          arg:  none
-         outcome: scores in regression between square root from incoming feature in original regression and absolute value residuals
+         return: R2 and MSE scores in regression between square root from incoming feature in original regression and absolute value residuals
         '''
         x=self.X.values.reshape(-1,1)
         y=self.Y
@@ -65,7 +65,7 @@ class Glejser_test(Heteroscedasticity_tests):
          Function computes coefficient in Glejser test regression
          
          arg:  none
-         outcome: scores in regression between inverse income feature in original regression and absolute value residuals
+         return: R2 and MSE scores in regression between inverse income feature in original regression and absolute value residuals
         '''
         x=self.X.values.reshape(-1,1)
         y=self.Y
