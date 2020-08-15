@@ -29,7 +29,7 @@ class Heteroscedasticity_tests():
          self.features = [self.X, np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
          #residuals
          self.y_new=self.find_residuals(self.X, self.Y)
-    
+         del self.df
       def find_residuals(self, x, y):
           '''
           function computes linear regression residuals

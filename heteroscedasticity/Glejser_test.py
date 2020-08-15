@@ -37,7 +37,8 @@ class Glejser_test(Heteroscedasticity_tests):
         #test wirh mR2
         n=R2s.index(mR2)+1
         del scores
-        return mR2,  n, pvalues[n-1]
+        print("Test number {} works the best with R2={} and p value={}".format(n, mR2, pvalues[n-1]))
+        return mR2, n, pvalues[n-1]
     
      def glejser_test(self):
          '''
@@ -47,7 +48,7 @@ class Glejser_test(Heteroscedasticity_tests):
          '''
          R2, n, pvalue= self.choose_test()
          self.plot_original()
-         print("Test number {} works best with R2={}".format(n, R2))
+        
          if pvalue > 0.05:
             return "Glejser test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
