@@ -25,7 +25,6 @@ class Heteroscedasticity_tests():
          self.X = self.df[col_x].values.reshape(-1,1)
          #outcome
          self.Y = self.df[col_y].values.reshape(-1,1)
-         
          #residuals
          self.y_new=self.find_residuals(self.X, self.Y)
         
@@ -55,7 +54,7 @@ class Heteroscedasticity_tests():
           results = model.fit()
           return results.rsquared, results.pvalues[0]
       
-      def plot_original(self):
+      def plot_data(self, x, y):
 
         """Function to plot original data
         
@@ -66,7 +65,7 @@ class Heteroscedasticity_tests():
             
         """
         # make the plot
-        plt.scatter(self.X, self. Y)
+        plt.scatter(x, y)
         plt.title('Original data')
         plt.ylabel('Y')
         plt.xlabel('X')
