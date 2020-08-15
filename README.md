@@ -15,7 +15,7 @@
  # Current files
  Heteroscedasticity_test_general.py is generic class
  
- park_test.py is Park test subclass
+ Park_test.py is Park test subclass
  
  Glejser_test.py is Glejser test subclass 
  
