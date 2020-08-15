@@ -57,12 +57,11 @@ class Heteroscedasticity_tests():
       
       def plot_original(self):
 
-        """Function to plot the normalized histogram of the data and a plot of the 
-        probability density function along the same range
+        """Function to plot original data
         
         Args:
            none
-        Returns:
+        Produces:
             plot
             
         """
