@@ -20,34 +20,21 @@ class Glejser_test(Heteroscedasticity_tests):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
          self.scores=[]
          
-     def regression_scores(self, x, y):
-         '''
-         Function computes R2 and MSE in linear regression
-         
-         args: regession income x and outcome y
-         returns: R2 and rme squared errors for regression with given x and y
-         '''
-        #x = x.values.reshape(-1,1)
-         model=self.model
-         model.fit(x, y)
-         y_pred = model.predict(x)
-         r2=r2_score(y, y_pred)
-         mse = mean_squared_error(y, y_pred)
-         return r2, mse
-    
     
      def choose_test(self):
         '''
          Function choose regression for Glejser test with best R2 score
          
-         arg:  none
-         returns: R2 score, and number of Glejser regression
+         args:  none
+         return: maximum R2 score, and number of Glejser regression with this score
         '''
         for j in range(len(self.features)):
-            self.scores.append(self.regression_scores(self.features[j], self.y_new))
-            arr=[i[0] for i in self.scores]
-            mR2=max(arr)
-        return mR2,  arr.index(mR2)+1
+            self.scores.append(self.find_p_value(self.features[j], self.y_new))
+        R2s=[i[0] for i in self.scores]
+        pvalues =[i[1] for i in self.scores]
+        mR2=max(R2s)
+        n=R2s.index(mR2)+1
+        return mR2,  n, pvalues[n-1]
     
      def glejser_test(self):
          '''
@@ -55,9 +42,13 @@ class Glejser_test(Heteroscedasticity_tests):
          args:  none
          returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
          '''
-         R2, n = self.choose_test()
-         pvalue = self.find_p_value(self.features[n-1], self.y_new)
-         return  pvalue
+         R2, n, pvalue= self.choose_test()
+         print("Test number {} works best with R2={}".format(n, R2))
+         if pvalue > 0.05:
+            return "P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+         else:
+            return "P value {} is smaller than 0.05, you have Heteroscedasticity".format(pvalue)
+ 
         
-#print(Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())       
+print(Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())       
  
