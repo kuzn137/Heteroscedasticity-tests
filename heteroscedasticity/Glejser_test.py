@@ -17,7 +17,6 @@ class Glejser_test(Heteroscedasticity_tests):
      '''
      def __init__(self, file_name, col_x, col_y):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
-         self.scores=[]
             
      def choose_test(self):
         '''
@@ -26,12 +25,18 @@ class Glejser_test(Heteroscedasticity_tests):
          args:  none
          return: maximum R2 score, and number of Glejser regression with this score
         '''
+        scores=[]
         for j in range(len(self.features)):
-            self.scores.append(self.find_p_value(self.features[j], self.y_new))
-        R2s=[i[0] for i in self.scores]
-        pvalues =[i[1] for i in self.scores]
+            scores.append(self.find_p_value(self.features[j], self.y_new))
+        #array with R2 scores
+        R2s=[i[0] for i in scores]
+        #array with p values
+        pvalues =[i[1] for i in scores]
+        #maximum R2 score
         mR2=max(R2s)
+        #test wirh mR2
         n=R2s.index(mR2)+1
+        del scores
         return mR2,  n, pvalues[n-1]
     
      def glejser_test(self):
@@ -43,10 +48,9 @@ class Glejser_test(Heteroscedasticity_tests):
          R2, n, pvalue= self.choose_test()
          print("Test number {} works best with R2={}".format(n, R2))
          if pvalue > 0.05:
-            return "P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+            return "Glejser test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "P value {} is smaller than 0.05, you have Heteroscedasticity".format(pvalue)
+            return "Glejser test: P value {} is smaller than 0.05, you have Heteroscedasticity".format(pvalue)
  
         
-#print(Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())       
  

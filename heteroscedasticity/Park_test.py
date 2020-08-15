@@ -5,7 +5,6 @@ Created on Sat Aug  8 10:44:26 2020
 @author: kuzn137
 """
 import numpy as np
-
 #import matplotlib.pyplot as plt
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Park_test(Heteroscedasticity_tests):
@@ -20,7 +19,7 @@ class Park_test(Heteroscedasticity_tests):
      def __init__(self, file_name, col_x, col_y):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
         
-     def park_regression(self):
+     def park_test(self):
          '''
          Function computes p value for park test regression
          args:  none
@@ -30,10 +29,10 @@ class Park_test(Heteroscedasticity_tests):
          x = np.log(np.abs(self.X))
          pvalue = self.find_p_value(x, np.log(np.square(self.y_new)))[1]
          if pvalue > 0.05:
-            return "P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+            return "Park test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "P value {} is smaller than 0.05, you may have Heteroscedasticity".format(pvalue)
+            return "Park test: P value {} is smaller than 0.05, you may have Heteroscedasticity".format(pvalue)
  
-#print(Park_test("data_1_1.csv", 'x', 'y').park_regression())
+
         
    

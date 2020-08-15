@@ -52,7 +52,6 @@ class Heteroscedasticity_tests():
           #other library for regression to find p value 
           md=sm.regression.linear_model.OLS(x, y)
           results = md.fit()
-          print(results.summary())
           return results.rsquared, results.pvalues[0]
         
         
