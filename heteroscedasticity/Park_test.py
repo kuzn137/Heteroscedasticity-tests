@@ -27,14 +27,14 @@ class Park_test(Heteroscedasticity_tests):
          returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
          '''
          #considering logs as suggested
-         self.plot_data(self.X, self.Y, 'X', 'Y')
+         self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
          pvalue = self.find_p_value(self.x, self.y)[1]
          if pvalue > 0.05:
             return "Park test: P value {} is larger than 0.05, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
          else:
             return "Park test: P value {} is smaller than 0.05, you may have heteroscedasticity".format(pvalue)
-    # def plot_log_residuals(self):
-     #    self.plot_data(self.x, self.y)
+     def plot_log_residuals(self):
+         self.plot_data(self.x, self.y, 'log(|X|)', 'log(residuals^2)')
             
  
 
