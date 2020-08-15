@@ -15,7 +15,7 @@ class Park_test(Heteroscedasticity_tests):
             column col_x is for incoming features
             column col_y is for outcome
      '''
-     def __init__(self, file_name, col_x, col_y):
+     def __init__(self, file_name='none', col_x='none', col_y='none'):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
         
      def park_test(self):
@@ -34,7 +34,8 @@ class Park_test(Heteroscedasticity_tests):
          else:
             return "Park test: P value {} is smaller than 0.05, you may have heteroscedasticity".format(pvalue)
         
-        
+      
+            
  
 
         

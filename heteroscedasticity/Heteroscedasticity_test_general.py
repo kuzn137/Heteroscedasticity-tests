@@ -25,10 +25,10 @@ class Heteroscedasticity_tests():
          self.X = self.df[col_x].values.reshape(-1,1)
          #outcome
          self.Y = self.df[col_y].values.reshape(-1,1)
-         #functions from feature for different linear regressions in Glejser test
-         self.features = [self.X, np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
+         
          #residuals
          self.y_new=self.find_residuals(self.X, self.Y)
+        
          del self.df
       def find_residuals(self, x, y):
           '''

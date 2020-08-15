@@ -4,6 +4,7 @@ Created on Mon Aug 10 23:50:51 2020
 
 @author: kuzn137
 """
+import numpy as np
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Glejser_test(Heteroscedasticity_tests):
      '''
@@ -15,9 +16,10 @@ class Glejser_test(Heteroscedasticity_tests):
             column col_x is for incoming features
             column col_y is for outcome
      '''
-     def __init__(self, file_name, col_x, col_y):
+     def __init__(self, file_name='none', col_x='none', col_y='none'):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
-            
+         #functions from feature for different linear regressions in Glejser test
+         self.features = [self.X, np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
      def choose_test(self):
         '''
          Function chooses regression for Glejser test with the best R2 score
