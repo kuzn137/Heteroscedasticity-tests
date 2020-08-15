@@ -36,7 +36,7 @@ class Heteroscedasticity_tests():
           args:
               regression incoming features: x
               regression outcome: y
-          function returns residual
+          function returns residuals
           '''
           model = lm.LinearRegression()
           y = self.Y
