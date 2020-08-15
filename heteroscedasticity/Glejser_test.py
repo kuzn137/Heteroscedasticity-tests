@@ -9,7 +9,8 @@ import numpy as np
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Glejser_test(Heteroscedasticity_tests):
      '''
-     Glejser_test class tests heteroscedasticity computing coefficient(s) of linear regression between feature in origional regression under the test and squared residuals
+     Glejser_test class tests heteroscedasticity computing p value for linear regression between function of feature in origional regression under the test and absolute
+     value of residuals
 
      Attributes:
             data file, file_name is name string
