@@ -6,7 +6,7 @@ Created on Thu Aug  6 12:38:37 2020
 """
 from sklearn import linear_model as lm
 import pandas as pd
-
+import statsmodels.api as sm
 class Heteroscedasticity_tests():
       """ Generic class for Heteroscedasticity tests as
             Park and Glejser methods.
@@ -37,6 +37,18 @@ class Heteroscedasticity_tests():
           model.fit(x, y)
           y_pred=model.predict(y)
           return abs(y_pred - y)
+      
+      def find_p_value(self, x, y):
+          '''
+          computes p value for regression between x and y
+          args: x and y, income and outcome for linear regression
+          returns: p value
+          '''
+          model=sm.regression.linear_model.OLS(x, y)
+          results = model.fit()
+          print(results.summary())
+          print(results.pvalues[0])
+          return results.pvalues[0]
         
         
          

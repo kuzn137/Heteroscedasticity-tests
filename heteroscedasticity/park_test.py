@@ -5,7 +5,7 @@ Created on Sat Aug  8 10:44:26 2020
 @author: kuzn137
 """
 import numpy as np
-import statsmodels.api as sm
+
 
 #import matplotlib.pyplot as plt
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
@@ -23,18 +23,16 @@ class Park_test(Heteroscedasticity_tests):
         
      def park_regression(self):
          '''
-         Function computes coefficient in park test regression
-         arg:  none
-         outcome: p value to test slope for regression between considered feature and residuals. If p < 0.05 we rather have Heteroscedasticity.
+         Function computes p value for park test regression
+         args:  none
+         returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
          '''
          x=self.X.values.reshape(-1,1)
          y=self.Y
          residuals = self.find_residuals(x, y)
          y_new = np.square(residuals)
-         model=sm.regression.linear_model.OLS(x, y_new)
-         results = model.fit()
-         print(results.summary())
-         return "pvalue {}, coefficient {}".format(results.pvalues[0])
+         pvalue = self.find_p_value(x, y_new)
+         return "pvalue {}".format(pvalue)
  
 #print(Park_test("data_1_1.csv", 'x', 'y').park_regression())
         
