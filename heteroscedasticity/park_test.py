@@ -11,7 +11,7 @@ import statsmodels.api as sm
 from Heteroscedasticity_test_general import Heteroscedasticity_tests
 class Park_test(Heteroscedasticity_tests):
      '''
-     Park_test class tests heteroscedasticity computing coefficient(s) of linear regression between feature in original regression under the test and squared residuals
+     Park_test class tests heteroscedasticity computing p value for linear regression between feature in original regression under the test and squared residuals
 
      Attributes:
             data file, file_name is name string
