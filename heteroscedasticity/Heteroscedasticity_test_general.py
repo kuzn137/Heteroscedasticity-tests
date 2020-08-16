@@ -59,7 +59,7 @@ class Heteroscedasticity_tests():
         """Function to plot original data
         
         Args:
-           none
+           x and y to plot, xlabel, ylabel, title
         Produces:
             plot
             
