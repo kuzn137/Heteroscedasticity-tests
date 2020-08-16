@@ -10,7 +10,7 @@
  Inga Kuznetsova
  
  # Libraries
- scikit learn, stats models, numpy, pandas
+ statsmodels, numpy, pandas
  
  # Current files
  Heteroscedasticity_test_general.py is generic class
