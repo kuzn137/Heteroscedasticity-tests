@@ -4,7 +4,7 @@ Created on Thu Aug  6 12:38:37 2020
 
 @author: kuzn137
 """
-
+from sklearn import linear_model as lm 
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -15,20 +15,20 @@ class Heteroscedasticity_tests():
             Both methods use linear regression for functions of tested income feature and residuals as outcome
     
         Attributes:
-            data file, file_name is name string
-            column col_x is for incoming features
-            column col_y is for outcome
+            numpy arrays X, Y
+            if you use pandas dataframe df
+            X = df['x'].values.reshape(-1,1)
+            Y = df['y'].values.reshape(-1,1)
       """
-      def __init__(self, file_name, col_x, col_y):
-         self.df=pd.read_csv(file_name)
+      def __init__(self, X, Y):
          #incoming feature
-         self.X = self.df[col_x].values.reshape(-1,1)
+         self.X = X
          #outcome
-         self.Y = self.df[col_y].values.reshape(-1,1)
+         self.Y = Y
          #residuals
          self.y_new=self.find_residuals()
         
-         del self.df
+        
       def fit_results(self, x, y):
           '''
           fit linear model 
@@ -46,8 +46,10 @@ class Heteroscedasticity_tests():
               regression outcome: y
           returns: residuals
           '''
-          
-          return np.abs(self.fit_results(self.X, self.Y).resid)
+          model = lm.LinearRegression()
+          model.fit(self.X, self.Y)
+          Y_pred = model.predict(self.Y)
+          return np.abs(self.Y-Y_pred)
       
       def find_p_value(self, x, y):
           '''

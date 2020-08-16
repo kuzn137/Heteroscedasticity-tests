@@ -16,10 +16,10 @@ class Glejser_test(Heteroscedasticity_tests):
             column col_x is for incoming features
             column col_y is for outcome
      '''
-     def __init__(self, file_name=None, col_x=None, col_y=None):
-         Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
+     def __init__(self, X=None, Y=None):
+         Heteroscedasticity_tests.__init__(self, X, Y)
          #functions from feature for different linear regressions in Glejser test
-         self.features = [abs(self.X), np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
+         self.features = [np.abs(self.X), np.sqrt(np.abs(self.X)), np.reciprocal(np.abs(self.X))]
          #dictionary for xlabel from test number
          self.var_xlabel={1: '|x|', 2: 'sqrt(|x|)', 3: '1/|x|'}
          
@@ -54,10 +54,10 @@ class Glejser_test(Heteroscedasticity_tests):
          R2, n, pvalue= self.choose_test()
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
         
-         if pvalue > 0.05:
-            return "Glejser test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+         if pvalue > 0.01:
+            return "Glejser test: P value {} is larger than 0.01, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "Glejser test: P value {} is smaller than 0.05, you have Heteroscedasticity".format(pvalue)
+            return "Glejser test: P value {} is smaller than 0.01, you have Heteroscedasticity".format(pvalue)
  
      def plot_test(self, n):
          """
