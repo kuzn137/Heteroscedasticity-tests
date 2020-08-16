@@ -22,12 +22,13 @@ class Glejser_test(Heteroscedasticity_tests):
          self.features = [abs(self.X), np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
          #dictionary for xlabel from test number
          self.var_xlabel={1: '|x|', 2: 'sqrt(|x|)', 3: '1/|x|'}
+         
      def choose_test(self):
         '''
          Function chooses regression for Glejser test with the best R2 score
          
          args:  none
-         return: maximum R2 score, and number of Glejser regression with this score
+         returns: maximum R2 score, and number of Glejser regression with this score, p value for this test
         '''
         scores=[]
         for j in range(len(self.features)):
@@ -48,7 +49,7 @@ class Glejser_test(Heteroscedasticity_tests):
          '''
          Function computes p value for Glejser test regression
          args:  none
-         returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
+         returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have heteroscedasticity.
          '''
          R2, n, pvalue= self.choose_test()
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
@@ -60,8 +61,8 @@ class Glejser_test(Heteroscedasticity_tests):
  
      def plot_test(self, n):
          """
-         plots absolute value of residuals from feature for test numbe n
+         plots absolute value of residuals from feature for test number (int) n
          """
-         self.plot_data(self.features[n-1], self.y_new, self.var_xlabel[n], '|residuals|')
+         self.plot_data(self.features[n-1], self.y_new, self.var_xlabel[n], '|residuals|', title = 'Glejser test  #{}'.format(n))
     
  

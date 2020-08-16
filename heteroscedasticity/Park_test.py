@@ -38,7 +38,7 @@ class Park_test(Heteroscedasticity_tests):
          '''
          plots log(residuals^2) from log(|x|)
          '''
-         self.plot_data(self.x, self.y, 'log(|X|)', 'log(residuals^2)')
+         self.plot_data(self.x, self.y, 'log(|X|)', 'log(residuals^2)', title='Park test')
             
  
 

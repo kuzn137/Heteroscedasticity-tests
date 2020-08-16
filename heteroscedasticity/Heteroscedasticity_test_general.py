@@ -30,15 +30,21 @@ class Heteroscedasticity_tests():
         
          del self.df
       def fit_results(self, x, y):
+          '''
+          fit linear model 
+          args: x, y
+          returns: model
+          '''
           model=sm.regression.linear_model.OLS(x, y)
           return model.fit()
+      
       def find_residuals(self, x, y):
           '''
           function computes linear regression residuals
           args:
               regression incoming features: x
               regression outcome: y
-          function returns residuals
+          returns: residuals
           '''
           
           return np.abs(self.fit_results(x, y).resid)
