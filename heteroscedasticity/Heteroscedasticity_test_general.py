@@ -4,7 +4,7 @@ Created on Thu Aug  6 12:38:37 2020
 
 @author: kuzn137
 """
-from sklearn import linear_model as lm
+
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -29,6 +29,9 @@ class Heteroscedasticity_tests():
          self.y_new=self.find_residuals(self.X, self.Y)
         
          del self.df
+      def fit_results(self, x, y):
+          model=sm.regression.linear_model.OLS(x, y)
+          return model.fit()
       def find_residuals(self, x, y):
           '''
           function computes linear regression residuals
@@ -37,11 +40,8 @@ class Heteroscedasticity_tests():
               regression outcome: y
           function returns residuals
           '''
-          model = lm.LinearRegression()
-          y = self.Y
-          model.fit(x, y)
-          y_pred=model.predict(y)
-          return abs(y_pred - y)
+          
+          return np.abs(self.fit_results(x, y).resid)
       
       def find_p_value(self, x, y):
           '''
@@ -49,9 +49,8 @@ class Heteroscedasticity_tests():
           args: x and y, income and outcome for linear regression
           returns: p value
           '''
-          #other library for regression to find p value 
-          model=sm.regression.linear_model.OLS(x, y)
-          results = model.fit()
+        
+          results = self.fit_results(x, y)
           return results.rsquared, results.pvalues[0]
       
       def plot_data(self, x, y, xlabel, ylabel, title=None):
