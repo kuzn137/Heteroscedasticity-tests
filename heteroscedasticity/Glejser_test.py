@@ -16,10 +16,12 @@ class Glejser_test(Heteroscedasticity_tests):
             column col_x is for incoming features
             column col_y is for outcome
      '''
-     def __init__(self, file_name='none', col_x='none', col_y='none'):
+     def __init__(self, file_name=None, col_x=None, col_y=None):
          Heteroscedasticity_tests.__init__(self, file_name, col_x, col_y)
          #functions from feature for different linear regressions in Glejser test
-         self.features = [self.X, np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
+         self.features = [abs(self.X), np.sqrt(abs(self.X)), np.reciprocal(abs(self.X))]
+         #dictionary for xlabel from test number
+         self.var_xlabel={1: '|x|', 2: 'sqrt(|x|)', 3: '1/|x|'}
      def choose_test(self):
         '''
          Function chooses regression for Glejser test with the best R2 score
@@ -49,12 +51,17 @@ class Glejser_test(Heteroscedasticity_tests):
          returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have Heteroscedasticity.
          '''
          R2, n, pvalue= self.choose_test()
-         self.plot_data(self.X, self.Y, 'X', 'Y')
+         self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
         
          if pvalue > 0.05:
             return "Glejser test: P value {} is larger than 0.05, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
             return "Glejser test: P value {} is smaller than 0.05, you have Heteroscedasticity".format(pvalue)
  
+     def plot_test(self, n):
+         """
+         plots absolute value of residuals from feature for test numbe n
+         """
+         self.plot_data(self.features[n-1], self.y_new, self.var_xlabel[n], '|residuals|')
     
  

@@ -33,7 +33,11 @@ class Park_test(Heteroscedasticity_tests):
             return "Park test: P value {} is larger than 0.05, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
          else:
             return "Park test: P value {} is smaller than 0.05, you may have heteroscedasticity".format(pvalue)
+        
      def plot_log_residuals(self):
+         '''
+         plots log(residuals^2) from log(|x|)
+         '''
          self.plot_data(self.x, self.y, 'log(|X|)', 'log(residuals^2)')
             
  

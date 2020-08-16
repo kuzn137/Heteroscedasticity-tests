@@ -68,6 +68,7 @@ class Heteroscedasticity_tests():
         plt.scatter(x, y)
         plt.ylabel(ylabel)
         plt.xlabel(xlabel)
+        plt.title(title)
       
         plt.show()
 

@@ -9,8 +9,9 @@ import Park_test
 
 #Park test
 print(Park_test.Park_test("data_1_1.csv", 'x', 'y').park_test())
+Park_test.Park_test("data_1_1.csv", 'x', 'y').plot_log_residuals()
 #Glejser test      
 print(Glejser_test.Glejser_test("data_1_1.csv", 'x', 'y').glejser_test())  
-     
+Glejser_test.Glejser_test("data_1_1.csv", 'x', 'y').plot_test(2)    
 #It looks like test without logs gives much better result to detect heteroscedasticity
   
