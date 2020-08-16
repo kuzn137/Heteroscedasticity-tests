@@ -26,7 +26,7 @@ class Heteroscedasticity_tests():
          #outcome
          self.Y = self.df[col_y].values.reshape(-1,1)
          #residuals
-         self.y_new=self.find_residuals(self.X, self.Y)
+         self.y_new=self.find_residuals()
         
          del self.df
       def fit_results(self, x, y):
@@ -38,7 +38,7 @@ class Heteroscedasticity_tests():
           model=sm.regression.linear_model.OLS(x, y)
           return model.fit()
       
-      def find_residuals(self, x, y):
+      def find_residuals(self):
           '''
           function computes linear regression residuals
           args:
@@ -47,7 +47,7 @@ class Heteroscedasticity_tests():
           returns: residuals
           '''
           
-          return np.abs(self.fit_results(x, y).resid)
+          return np.abs(self.fit_results(self.X, self.Y).resid)
       
       def find_p_value(self, x, y):
           '''
