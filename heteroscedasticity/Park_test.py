@@ -18,7 +18,8 @@ class Park_test(Heteroscedasticity_tests):
      def __init__(self, X=None, Y=None):
          Heteroscedasticity_tests.__init__(self, X, Y)
          self.x = np.log(np.abs(self.X))
-         self.y=np.log(np.square(self.y_new))
+         #normalization helped to do P values more stable
+         self.y=np.log(np.square(self.y_new)/(np.sum(np.square(self.y_new))/self.y_new.shape[0]))
          
      def park_test(self):
          '''
@@ -29,10 +30,10 @@ class Park_test(Heteroscedasticity_tests):
          #considering logs as suggested
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
          pvalue = self.find_p_value(self.x, self.y)[1]
-         if pvalue > 0.00001:
-            return "Park test: P value {} is larger than 0.00001, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
+         if pvalue > 0.001:
+            return "Park test: P value {} is larger than 0.001, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "Park test: P value {} is smaller than 0.00001, you may have heteroscedasticity".format(pvalue)
+            return "Park test: P value {} is smaller than 0.001, you may have heteroscedasticity".format(pvalue)
         
      def plot_log_residuals(self):
          '''

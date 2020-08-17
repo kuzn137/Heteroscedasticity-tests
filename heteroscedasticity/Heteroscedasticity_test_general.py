@@ -26,7 +26,7 @@ class Heteroscedasticity_tests():
          self.Y = Y
          #residuals
          self.y_new=self.find_residuals()
-        
+         
         
       def fit_results(self, x, y):
           '''
