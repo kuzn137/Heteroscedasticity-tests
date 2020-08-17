@@ -12,9 +12,8 @@ class Glejser_test(Heteroscedasticity_tests):
      absolute value of residuals
 
      Attributes:
-            data file, file_name is name string
-            column col_x is for incoming features
-            column col_y is for outcome
+            numpy array X 
+            numpy array Y
      '''
      def __init__(self, X=None, Y=None):
          Heteroscedasticity_tests.__init__(self, X, Y)
@@ -56,9 +55,9 @@ class Glejser_test(Heteroscedasticity_tests):
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
         
          if pvalue > 0.00001:
-            return "Glejser test: P value {} is larger than 0.00001, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+            return "Glejser test: P value = {} is larger than 0.00001, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "Glejser test: P value {} is smaller than 0.00001, you have Heteroscedasticity".format(pvalue)
+            return "Glejser test: P value = {} is smaller than 0.00001, you have Heteroscedasticity".format(pvalue)
  
      def plot_test(self, n):
          """

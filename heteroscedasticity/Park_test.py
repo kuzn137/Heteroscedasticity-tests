@@ -11,9 +11,8 @@ class Park_test(Heteroscedasticity_tests):
      Park_test class tests heteroscedasticity computing p value for linear regression between feature in original regression under the test and squared residuals
 
      Attributes:
-            data file, file_name is name string
-            column col_x is for incoming features
-            column col_y is for outcome
+            numpy array X
+            numpy array Y
      '''
      def __init__(self, X=None, Y=None):
          Heteroscedasticity_tests.__init__(self, X, Y)
@@ -31,9 +30,9 @@ class Park_test(Heteroscedasticity_tests):
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
          pvalue = self.find_p_value(self.x, self.y)[1]
          if pvalue > 0.001:
-            return "Park test: P value {} is larger than 0.001, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
+            return "Park test: P value = {} is larger than 0.001, you may not have heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "Park test: P value {} is smaller than 0.001, you may have heteroscedasticity".format(pvalue)
+            return "Park test: P value = {} is smaller than 0.001, you may have heteroscedasticity".format(pvalue)
         
      def plot_log_residuals(self):
          '''
