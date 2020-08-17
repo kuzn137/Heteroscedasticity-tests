@@ -4,8 +4,7 @@ Created on Thu Aug  6 12:38:37 2020
 
 @author: kuzn137
 """
-from sklearn import linear_model as lm 
-import pandas as pd
+
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
@@ -46,10 +45,10 @@ class Heteroscedasticity_tests():
               regression outcome: y
           returns: residuals
           '''
-          model = lm.LinearRegression()
-          model.fit(self.X, self.Y)
-          Y_pred = model.predict(self.Y)
-          return np.abs(self.Y-Y_pred)
+         # model = lm.LinearRegression()
+         # model.fit(self.X, self.Y)
+         # Y_pred = model.predict(self.Y)
+          return np.abs(self.fit_results(self.X, self.Y).resid)
       
       def find_p_value(self, x, y):
           '''
@@ -59,6 +58,7 @@ class Heteroscedasticity_tests():
           '''
         
           results = self.fit_results(x, y)
+         
           return results.rsquared, results.pvalues[0]
       
       def plot_data(self, x, y, xlabel, ylabel, title=None):

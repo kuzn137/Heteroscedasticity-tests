@@ -54,10 +54,10 @@ class Glejser_test(Heteroscedasticity_tests):
          R2, n, pvalue= self.choose_test()
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
         
-         if pvalue > 0.01:
-            return "Glejser test: P value {} is larger than 0.01, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
+         if pvalue > 0.00001:
+            return "Glejser test: P value {} is larger than 0.00001, you may not have Heteroscedasticity, check the Glejser test".format(pvalue)
          else:
-            return "Glejser test: P value {} is smaller than 0.01, you have Heteroscedasticity".format(pvalue)
+            return "Glejser test: P value {} is smaller than 0.00001, you have Heteroscedasticity".format(pvalue)
  
      def plot_test(self, n):
          """
