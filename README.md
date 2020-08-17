@@ -17,7 +17,30 @@
  
  Park_test.py is Park test subclass
  
+ Heteroscedasticity_test_general.park_test(X, Y)
+ 
+ X and Y are numpy arrays, regression incoming feature and outcome
+ 
+ functions:
+ 
+ park_test()  -- main test
+ 
+ plot_log_residuals() -- plot log(residuals^2) vs log(X)
+ 
  Glejser_test.py is Glejser test subclass 
+ 
+Heteroscedasticity_test_general.glejser_test(X, Y)
+ 
+ X and Y are numpy arrays, regression incoming feature and outcome
+
+ functions:
+ 
+ choose_test() chooses which of Glejser regressions works the best
+ 
+ glejser_test() -- main test function 
+ 
+  plot_test(n)  -- plot test regression by number, see numbers in description
+
  
  data_1_1.csv and datasets_141319_332156_1.01. Simple linear regression.csv are data files
  
