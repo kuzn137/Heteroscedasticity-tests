@@ -33,7 +33,7 @@ class Glejser_test(Heteroscedasticity_tests):
         '''
         scores=[]
         for j in range(len(self.features)):
-            scores.append(self.find_p_value(self.features[j], self.y_new/(np.sqrt(np.sum(np.square(self.y_new))/self.y_new.shape[0]))))
+            scores.append(self.find_p_value(self.features[j], self.y_new))
         #array with R2 scores
         R2s=[i[0] for i in scores]
         #array with p values
