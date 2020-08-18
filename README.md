@@ -17,7 +17,7 @@
  
  Park_test.py is Park test subclass
  
- Heteroscedasticity_test_general.park_test(X, Y)
+ Park_test.Park_test(X, Y)
  
  X and Y are numpy arrays, regression incoming feature and outcome
  
@@ -29,7 +29,7 @@
  
  Glejser_test.py is Glejser test subclass 
  
-Heteroscedasticity_test_general.glejser_test(X, Y)
+Glejser_test.Glejser_test(X, Y)
  
  X and Y are numpy arrays, regression incoming feature and outcome
 
