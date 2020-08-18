@@ -14,8 +14,11 @@
  
  # Current files
  Heteroscedasticity_test_general.py is generic class
+ import heteroscedasticity_tests 
  
  Park_test.py is Park test subclass
+ 
+ import Park_test
  
  Park_test.Park_test(X, Y)
  
