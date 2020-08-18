@@ -30,6 +30,8 @@
  
  plot_log_residuals() -- plot log(residuals^2) vs log(X)
  
+ import Glejser_test
+ 
  Glejser_test.py is Glejser test subclass 
  
 Glejser_test.Glejser_test(X, Y)
