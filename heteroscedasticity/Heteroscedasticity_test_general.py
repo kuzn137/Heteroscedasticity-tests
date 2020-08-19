@@ -27,7 +27,6 @@ class Heteroscedasticity_tests():
          #residuals
          self.y_new=self.find_residuals()
          
-        
       def fit_results(self, x, y):
           '''
           fit linear model 
@@ -45,9 +44,6 @@ class Heteroscedasticity_tests():
               regression outcome: y
           returns: residuals
           '''
-         # model = lm.LinearRegression()
-         # model.fit(self.X, self.Y)
-         # Y_pred = model.predict(self.Y)
           return np.abs(self.fit_results(self.X, self.Y).resid)
       
       def find_p_value(self, x, y):
@@ -58,7 +54,6 @@ class Heteroscedasticity_tests():
           '''
         
           results = self.fit_results(x, y)
-         
           return results.rsquared, results.pvalues[0]
       
       def plot_data(self, x, y, xlabel, ylabel, title=None):
