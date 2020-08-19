@@ -49,7 +49,7 @@ class Glejser_test(Heteroscedasticity_tests):
          '''
          Function computes p value for Glejser test regression
          args:  none
-         returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.05 we rather have heteroscedasticity.
+         returns: p value to test slope for regression between considered feature and squared residuals. If p < 0.00001 we rather have heteroscedasticity.
          '''
          R2, n, pvalue= self.choose_test()
          self.plot_data(self.X, self.Y, 'X', 'Y', title='original data')
